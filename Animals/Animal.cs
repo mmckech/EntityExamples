@@ -12,6 +12,7 @@ namespace Animals
         [Key]
         public string Name { get; set; }
 
+        public string Species { get; set; }
         public int Legs { get; set; }
     }
 }
