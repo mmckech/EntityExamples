@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201509191613486_EdibleRenamed.Designer.cs">
       <DependentUpon>201509191613486_EdibleRenamed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201509191646232_NotSureWhatChangedHere.cs" />
+    <Compile Include="Migrations\201509191646232_NotSureWhatChangedHere.Designer.cs">
+      <DependentUpon>201509191646232_NotSureWhatChangedHere.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -96,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201509191613486_EdibleRenamed.resx">
       <DependentUpon>201509191613486_EdibleRenamed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509191646232_NotSureWhatChangedHere.resx">
+      <DependentUpon>201509191646232_NotSureWhatChangedHere.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

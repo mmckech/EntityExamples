@@ -15,6 +15,7 @@ namespace Animals
         public Database()
             : base("name=Database")
         {
+            Database.Log = s => Console.WriteLine(s);
         }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
