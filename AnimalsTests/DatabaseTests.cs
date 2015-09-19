@@ -17,24 +17,33 @@ namespace AnimalsTests
     public class DatabaseTests
     {
         [Test]
+        public void DatabaseTest()
+        {
+            CreateTest();
+            MigrateDatabase();
+            AddDataTest();
+        }
+
         public void CreateTest()
         {
             //Arrange
             Database db = new Database();
+            db.Database.Delete();
 
             //Act
-            bool created = db.Database.CreateIfNotExists();
+            bool created;
+            Action act = () => created = db.Database.CreateIfNotExists();
 
             //Assert
-            created.Should().BeTrue();
+            act.ShouldThrow<InvalidOperationException>("Migrations are enabled so a simple create should fail");
         }
 
-        [Test]
         public void AddDataTest()
         {
             //Arrange
             Database db = new Database();
             Animal expectedAnimal = new Animal {Name = "Allan", Species = "dog", Legs = 2, Edible = true};
+            db.Database.ExecuteSqlCommand(@"DELETE FROM ""ANIMAL"".""Animals""");
 
             //Act
             db.Animals.Add(expectedAnimal);
@@ -45,13 +54,9 @@ namespace AnimalsTests
             db.Animals.Find(expectedAnimal.Name).Should().NotBeNull();
         }
 
-        [Test]
         public void MigrateDatabase()
         {
             //Arrange
-            //MigrateDatabaseToLatestVersion<Database, Configuration> initializer = 
-            //    new MigrateDatabaseToLatestVersion<Database, Configuration>("Database");
-            //System.Data.Entity.Database.SetInitializer<Database>(initializer);
 
             Animals.Migrations.Configuration config = new Configuration();
             DbMigrator migrator = new DbMigrator(config);
@@ -68,22 +73,16 @@ namespace AnimalsTests
             foreach (string s in migrator.GetPendingMigrations())
                 Console.WriteLine(s);
 
-            //Act
             Console.WriteLine("Migrating...");
             foreach (string s in migrator.GetPendingMigrations())
             {
+                //Act
                 Console.WriteLine("Applying migration {0}", s);
-                migrator.Update(s);
+                Action act = () => migrator.Update(s);
+
+                //Assert
+                act.ShouldNotThrow();
             }
-
-            //Assert
-            Animal expectedAnimal = new Animal { Name = "Allan", Species = "dog", Legs = 2, Edible = true };
-            Database db = new Database();
-            db.Animals.Add(expectedAnimal);
-            Action act = () => db.SaveChanges();
-            act.ShouldNotThrow();
-            db.Animals.Find(expectedAnimal.Name).Should().NotBeNull();
-
         }
     }
 }
