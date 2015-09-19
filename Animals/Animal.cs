@@ -14,5 +14,6 @@ namespace Animals
 
         public string Species { get; set; }
         public int Legs { get; set; }
+        public bool Edible { get; set; }
     }
 }

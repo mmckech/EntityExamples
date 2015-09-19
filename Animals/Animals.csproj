@@ -69,6 +69,14 @@
     <Compile Include="Migrations\201509191558118_AddedSpecies.Designer.cs">
       <DependentUpon>201509191558118_AddedSpecies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201509191611566_AddedEdible.cs" />
+    <Compile Include="Migrations\201509191611566_AddedEdible.Designer.cs">
+      <DependentUpon>201509191611566_AddedEdible.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201509191613486_EdibleRenamed.cs" />
+    <Compile Include="Migrations\201509191613486_EdibleRenamed.Designer.cs">
+      <DependentUpon>201509191613486_EdibleRenamed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -82,6 +90,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201509191558118_AddedSpecies.resx">
       <DependentUpon>201509191558118_AddedSpecies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509191611566_AddedEdible.resx">
+      <DependentUpon>201509191611566_AddedEdible.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509191613486_EdibleRenamed.resx">
+      <DependentUpon>201509191613486_EdibleRenamed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -30,7 +30,7 @@ namespace AnimalsTests
         {
             //Arrange
             Database db = new Database();
-            Animal expectedAnimal = new Animal {Name = "Steve", Legs = 2};
+            Animal expectedAnimal = new Animal {Name = "Allan", Species = "dog", Legs = 2};
 
             //Act
             db.Animals.Add(expectedAnimal);
